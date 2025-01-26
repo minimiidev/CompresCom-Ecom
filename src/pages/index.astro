@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+
+import { getPosts } from "../utils/sanity";
+const posts = await getPosts();
+---
+
+<Layout title="Astro + Sanity">
+  <section class="h-screen flex items-center justify-center flex-col gap-4">
+    <h1 class="h2">Astro + Sanity Template</h1>
+    {
+      posts.length ? (
+        posts.map((post) => <Card post={post} />)
+      ) : (
+        <h1>Nothing to show</h1>
+      )
+    }
+  </section>
+</Layout>

@@ -1,0 +1,72 @@
+---
+import type { InferGetStaticParamsType } from "astro";
+import PortableTextComponent from "@/components/portableText/PortableTextComponent.astro";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../utils";
+import { urlFor } from "../../utils/image";
+import { getPost, getPosts } from "../../utils/sanity";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const post = await getPost(slug);
+---
+
+<Layout title={post.title!}>
+  <section class="post container">
+    {
+      post.mainImage ? (
+        <img
+          class="post__cover"
+          src={urlFor(post.mainImage).url()}
+          alt="Cover image"
+        />
+      ) : (
+        <div class="post__cover--none" />
+      )
+    }
+    <div class="post__container">
+      <h1 class="post__title">{post.title}</h1>
+      <p class="post__excerpt">{post.excerpt}</p>
+      <p class="post__date">
+        {formatDate(post._createdAt)}
+      </p>
+      <div class="post__content">
+        <PortableTextComponent value={post.body} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .post {
+    @apply w-full py-10;
+
+    & .post__cover--none {
+      @apply w-full bg-black h-[350px];
+    }
+
+    & .post__container {
+      @apply border-t border-black mt-10;
+
+      & .post__title {
+        @apply text-4xl font-bold py-3;
+      }
+
+      & .post__excerpt {
+        @apply text-2xl;
+      }
+
+      & .post__date {
+        @apply text-sm mb-5;
+      }
+    }
+  }
+</style>
