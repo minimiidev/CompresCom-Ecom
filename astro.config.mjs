@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import sanity from '@sanity/astro'
 import react from '@astrojs/react'
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -11,7 +11,7 @@ export default defineConfig({
   adapter: vercel(),
 
   integrations: [sanity({
-    projectId: 'cbcrx2ga',
+    projectId: 'ub06ombv',
     dataset: 'production',
     // Set useCdn to false if you're building statically.
     useCdn: false,

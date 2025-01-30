@@ -1,0 +1,22 @@
+---
+export interface Props {
+  imgSrc: string;
+  name: string;
+  price: number;
+  slug: string;
+}
+
+const { imgSrc, name, price, slug } = Astro.props;
+---
+
+<a
+  href={`products/${slug}`}
+  class="w-[300px] overflow-hidden rounded-3xl border border-slate-400 shadow-sm [&:hover]:shadow-2xl [&:hover>img]:scale-[1.05] [&>*]:transition-all [&>*]:duration-300 cursor-pointer"
+>
+  <img src={imgSrc} alt={name} class="" />
+  <div class="px-4 py-5">
+    <h4 class="h4 font-medium">{name}</h4>
+
+    <p class="">RD$ {price}</p>
+  </div>
+</a>

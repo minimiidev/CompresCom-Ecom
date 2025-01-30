@@ -5,9 +5,9 @@ import { schemaTypes } from "./schemaTypes";
 
 export default defineConfig({
   name: "default",
-  title: "Astro+Sanity-Template",
+  title: "Compres Comunicaciones",
 
-  projectId: "cbcrx2ga",
+  projectId: "ub06ombv",
   dataset: "production",
 
   plugins: [structureTool(), visionTool()],

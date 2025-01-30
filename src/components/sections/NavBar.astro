@@ -1,0 +1,21 @@
+---
+import { links } from "@/data";
+---
+
+<nav class="py-5">
+  <div class="container flex items-center justify-between w-full mx-auto">
+    <h1 class="h3">Logo</h1>
+
+    <ul class="flex items-center">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.path} class="px-3 py-2 font-medium">
+              {link.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>

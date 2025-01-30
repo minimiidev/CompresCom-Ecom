@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --font-inter: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-montserrat: Montserrat, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 html,
 body {
   margin: 0;
   width: 100%;
   height: 100%;
   color: black;
+  background-color: #ccc;
 }
 
 * {
@@ -13,36 +19,36 @@ body {
 }
 
 .h1 {
-  @apply font-bold tracking-wide text-[64px] md:text-[96px] lg:text-[128px] leading-[0.85];
+  @apply font-montserrat font-bold tracking-wide text-[64px] md:text-[96px] leading-[0.85] text-red-500;
 }
 .h2 {
-  @apply text-4xl font-bold tracking-wide md:text-4xl lg:text-5xl;
+  @apply font-montserrat text-4xl font-bold tracking-wide md:text-4xl lg:text-5xl;
 }
 .h3 {
-  @apply text-3xl  font-bold  tracking-wide md:text-3xl lg:text-4xl;
+  @apply font-montserrat text-3xl  font-bold  tracking-wide md:text-3xl lg:text-4xl;
 }
 .h4 {
-  @apply text-2xl  font-bold  tracking-wide md:text-2xl lg:text-3xl;
+  @apply font-inter text-2xl  font-bold  tracking-wide md:text-xl;
 }
 
-.p1 {
+/* .p1 {
   @apply text-[22px] font-bold tracking-wider md:text-2xl lg:text-3xl transition-all duration-300 ease-in-out;
-}
+} */
 
-.p {
+/* .p {
   @apply text-sm md:text-base lg:text-lg;
-}
+} */
 
 p,
 span,
 label {
-  @apply text-sm md:text-base lg:text-lg;
+  @apply font-inter text-sm md:text-base;
 }
 
-.text-pasive {
+/* .text-pasive {
   @apply text-gray-600 dark:text-gray-400;
-}
+} */
 
-.hover\:text-pasive:hover {
+/* .hover\:text-pasive:hover {
   @apply text-gray-600 dark:text-gray-400;
-}
+} */

@@ -1,0 +1,57 @@
+---
+import "swiper/css";
+import "swiper/css/pagination";
+
+import crediGoBanner from "@/assets/heroBanners/credigo-banner.png";
+---
+
+<Fragment>
+  <!-- Slider main container -->
+  <div class="swiper w-auto h-[500px] lg:h-[750px]">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper cursor-pointer">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <img src={crediGoBanner.src} alt=`Credigo Banner` />
+      </div>
+      <div class="swiper-slide">
+        <img src={crediGoBanner.src} alt=`Credigo Banner` />
+      </div>
+      <div class="swiper-slide">
+        <img src={crediGoBanner.src} alt=`Credigo Banner` />
+      </div>
+
+      <!-- If we need pagination -->
+      <div class="swiper-pagination z-10"></div>
+    </div>
+  </div>
+
+  <style>
+    img {
+      @apply w-full h-full object-fill;
+    }
+  </style>
+
+  <script>
+    import Swiper from "swiper";
+    import { Pagination, Autoplay } from "swiper/modules";
+
+    const swiper = new Swiper(".swiper", {
+      speed: 400,
+      direction: "horizontal",
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3000, // Delay between slides (in milliseconds)
+        disableOnInteraction: false, // Continue autoplay even after user interaction
+      },
+      modules: [Pagination, Autoplay],
+    });
+  </script>
+</Fragment>
