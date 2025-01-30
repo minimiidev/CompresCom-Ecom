@@ -1,0 +1,21 @@
+---
+import Icon from "astro-iconify";
+
+const variant = {
+  primary: "bg-primary text-white",
+  secondary: "bg-secondary text-white",
+};
+---
+
+<!-- target="_blank" -->
+<a
+  href="#"
+  rel="noopener noreferrer"
+  class:list={[
+    "hover:scale-95 inline-flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300 ease-in-out font-medium",
+    Astro.props.class,
+  ]}
+>
+  <Icon name="mdi:whatsapp" size="32px" class="inline" />
+  WhatsApp
+</a>

@@ -1,4 +1,5 @@
 ---
+import WhatsApp from "@/components/shared/WhatsApp.astro";
 import Layout from "@/layouts/Layout.astro";
 import { loadQuery } from "@/utils/loadQuery";
 
@@ -41,7 +42,7 @@ const { brand, name, imgSrc, price, color, storage } = phone;
       <p class="my-5">Color:</p>
       <ul class="flex w-full gap-2">
         {
-          color.map((item: any) => (
+          color.map((item) => (
             <li class="cursor-pointer hover:bg-sky-500 hover:text-white rounded-2xl inline px-4 py-2 border min-w-[60px] transition-all duration-300 ease-in-out">
               {item}
             </li>
@@ -49,15 +50,16 @@ const { brand, name, imgSrc, price, color, storage } = phone;
         }
       </ul>
       <p class="my-5">Almacenamiento:</p>
-      <ul class="flex w-full gap-2">
+      <ul class="flex w-full gap-2 mb-6">
         {
-          storage.map((item: any) => (
+          storage.map((item) => (
             <li class="cursor-pointer hover:bg-sky-500 hover:text-white rounded-2xl inline px-4 py-2 border min-w-[60px] transition-all duration-300 ease-in-out">
               {item} {item === 1 ? "TB" : "GB"}
             </li>
           ))
         }
       </ul>
+      <WhatsApp class:list={"bg-green-500 text-white"} />
     </div>
   </section>
 </Layout>
