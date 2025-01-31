@@ -26,16 +26,15 @@ const { data: phone } = await loadQuery<{
     }`,
   params: { slug }, // Pasar slug como parámetro
 });
-
 const { brand, name, imgSrc, price, color, storage } = phone;
 ---
 
 <Layout title={`${name} | Compres Comunicaciones`}>
   <section
-    class="w-full py-10 md:grid-cols-2 container grid grid-cols-1 gap-5 lg:px-[100px] mx-auto place-items-start"
+    class="w-full py-10 md:grid-cols-2 grid grid-cols-1 gap-5 lg:px-[100px] md:gap-12 mx-auto place-items-start mb-[400px]"
   >
     <img src={imgSrc} alt=`${name} imagen` class="xl:min-w-[600px]" />
-    <div class="md:py-[50px] lg:py-[70px]">
+    <div class="lg:py-[70px]">
       <h1 class="h2 mb-10">{name}</h1>
       <p class="mb-5">Marca: {brand}</p>
       <p class="">RD$ {price}</p>

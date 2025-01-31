@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/sections/Footer.astro";
 import NavBar from "@/components/sections/NavBar.astro";
 import "@/global.css";
 
@@ -35,6 +36,7 @@ const visualEditingEnabled =
     <main>
       <slot />
     </main>
+    <Footer />
     <VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
   </body>
 </html>

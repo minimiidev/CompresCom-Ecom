@@ -8,6 +8,7 @@ export default {
       title: "Marca",
       type: "reference",
       to: [{ type: "brand" }],
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "name",
@@ -31,6 +32,7 @@ export default {
       name: "image",
       title: "Imagen",
       type: "image",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "price",
