@@ -1,0 +1,91 @@
+---
+import { loadQuery } from "@/utils/loadQuery";
+import { urlFor } from "@/utils/imageUrl";
+
+interface HeroBanner {
+  name?: string;
+  imgSrc?: string;
+  description?: string;
+}
+
+const { data: images } = await loadQuery<Array<HeroBanner>>({
+  query: `*[_type == "heroBanners"]
+  {
+    name,
+    "imgSrc": banner.asset -> url,
+    description
+  }`,
+});
+// Transform images after fetching
+const transformedImages = images.map((image) => ({
+  ...image,
+  imgSrc: image.imgSrc
+    ? urlFor(image.imgSrc)
+        // .width(4400) // Resize to 1200px width
+        // .height(2000) // Resize to 800px height
+        .format("webp") // Convert to WebP format
+        .quality(90) // Set image quality to 90%
+        .url() // Generate the URL
+    : undefined,
+}));
+---
+
+<div
+  class="swiper w-auto h-[300px] md:h-[450px] lg:h-[700px] flex items-center justify-center"
+>
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {
+      transformedImages.map(({ name, imgSrc, description }) => (
+        <div class="swiper-slide relative cursor-pointer">
+          <a href="#">
+            <img src={imgSrc} alt={name} class="object-cover w-full h-full" />
+            {description && (
+              <div class="backdrop-blur-2xl lg:rounded-4xl -bottom-10 left-1/2 absolute w-full p-5 transform -translate-x-1/2 -translate-y-1/2 bg-transparent">
+                <h3 class="h3 text-center text-white">{description}</h3>
+              </div>
+            )}
+          </a>
+        </div>
+      ))
+    }
+
+    <!-- If we need pagination -->
+    <!-- <div class="swiper-pagination z-10"></div> -->
+  </div>
+</div>
+
+<style>
+  .blur {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper", {
+    speed: 400,
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 10,
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 2000, // Delay between slides (in milliseconds)
+      disableOnInteraction: false, // Continue autoplay even after user interaction
+    },
+    modules: [Pagination, Autoplay],
+  });
+</script>

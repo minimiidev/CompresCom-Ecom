@@ -21,7 +21,7 @@ body {
 }
 
 .h1 {
-  @apply font-montserrat font-bold tracking-wide text-[64px] md:text-[96px] leading-[0.85] text-red-500;
+  @apply font-montserrat font-bold tracking-wide text-[64px] md:text-[72px] leading-[0.85];
 }
 .h2 {
   @apply font-montserrat text-4xl font-bold tracking-wide md:text-4xl lg:text-5xl;

@@ -3,6 +3,9 @@ import { loadQuery } from "@/utils/loadQuery";
 import type { Phone } from "@/utils/sanity";
 
 import ProductCard from "@/components/product/ProductCard.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const slug = Astro.params.slug ?? "";
 
 const { data: phones } = await loadQuery<
   Array<{
@@ -11,27 +14,29 @@ const { data: phones } = await loadQuery<
     slug: string;
     imgSrc: string;
     price: number;
+    color: [];
     storage: [];
   }>
 >({
-  query: `*[_type == "phone" ]
+  query: `*[_type == "phone" && brand -> name == $slug]
     {
-    "brand": brand -> name,
+      "brand": brand -> name,
       name,
       "slug": slug.current,
       "imgSrc": image.asset -> url,
       price,
+      color,
     storage
     }`,
+  params: { slug }, // Pasar slug como parámetro
 });
 ---
 
-<section class="w-full py-10">
-  <div class="container mx-auto">
-    <h2 class="h2 mb-10">Equipos Moviles</h2>
-
-    <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1">
+<Layout title={`Productos ${slug} | Compres Comunicaciones`}>
+  <section class="container w-full py-10 mx-auto">
+    <h1 class="h1 w-full mb-[40px]">Equipos {slug}</h1>
+    <div class="flex gap-4">
       {phones.map((phone) => <ProductCard {...phone} />)}
     </div>
-  </div>
-</section>
+  </section>
+</Layout>

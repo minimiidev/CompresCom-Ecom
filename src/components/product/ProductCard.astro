@@ -2,21 +2,39 @@
 export interface Props {
   imgSrc: string;
   name: string;
+  brand: string;
   price: number;
   slug: string;
+  storage: [];
 }
 
-const { imgSrc, name, price, slug } = Astro.props;
+const { imgSrc, name, brand, price, slug, storage } = Astro.props;
 ---
 
-<a
-  href={`products/${slug}`}
+<div
   class="w-[300px] overflow-hidden rounded-3xl border border-slate-400 shadow-sm [&:hover]:shadow-2xl [&:hover>img]:scale-[1.05] [&>*]:transition-all [&>*]:duration-300 cursor-pointer"
 >
-  <img src={imgSrc} alt={name} class="" />
-  <div class="px-4 py-5">
-    <h4 class="h4 font-medium">{name}</h4>
-
-    <p class="">RD$ {price}</p>
+  <a href={`products/${slug}`} class="flex items-center justify-center">
+    <img src={imgSrc} alt={name} class="object-contain w-full h-auto" />
+  </a>
+  <div class="border-t-1 w-full px-4 py-4">
+    <div class="flex justify-between">
+      <h4 class="h4 font-medium">
+        <a href={`products/${slug}`} class="hover:underline">{name}</a>
+      </h4>
+      <a href={`brand/${brand}`} class="hover:underline">
+        {brand}
+      </a>
+    </div>
+    <div>
+      <div class="flex gap-2">
+        {
+          storage.map((s) => (
+            <p class="pt-2">{s === 1 ? `${s}TB ` : `${s}GB`}</p>
+          ))
+        }
+      </div>
+      <p class="py-2">RD$ {price}</p>
+    </div>
   </div>
-</a>
+</div>

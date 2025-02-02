@@ -4,27 +4,44 @@
 
 <footer class="mx-auto">
   <section class="flex flex-col items-center justify-center py-12">
-    <div class="flex justify-between items-start w-full">
+    <div class="container flex items-start justify-between w-full">
       <h1 class="h2">Logo</h1>
 
       <div>
-        <h3 class="h3">Menu</h3>
+        <h3 class="h3">Equipos</h3>
         <ul>
-          <li>Home</li>
-          <li>Home</li>
-          <li>Home</li>
+          <li>Apple</li>
+          <li>Samsung</li>
+          <li>Xiaomi</li>
         </ul>
       </div>
 
       <div>
-        <h3 class="h3">Menu</h3>
+        <h3 class="h3">Servicios</h3>
         <ul>
-          <li>Home</li>
-          <li>Home</li>
-          <li>Home</li>
+          <li>Reparaciones</li>
+          <li>Telefonos</li>
+          <li>Accesorios</li>
+          <li>Computadores</li>
         </ul>
       </div>
     </div>
-    <p class="p1 mt-20">&copy; Todos los derechos reservados</p>
+    <p class="p1 mt-20">
+      &copy; {new Date().getFullYear()} Compres Comunicaciones
+    </p>
+    <p>
+      <a
+        href="https://https://moonlandingrd.vercel.app/"
+        class="hover:underline"
+      >
+        Desarollado por Moon Landing</a
+      >
+    </p>
   </section>
 </footer>
+
+<style is:raw>
+  li {
+    @apply hover:underline cursor-pointer;
+  }
+</style>

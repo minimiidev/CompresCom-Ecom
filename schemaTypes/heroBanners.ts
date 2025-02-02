@@ -12,5 +12,6 @@ export default {
         hotspot: true, // Enable hotspot for cropping
       },
     },
+    { name: "description", title: "Descripcion", type: "string" },
   ],
 };
