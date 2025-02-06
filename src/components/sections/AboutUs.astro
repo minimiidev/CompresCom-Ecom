@@ -1,7 +1,69 @@
 ---
-
+import Icon from "astro-iconify";
 ---
 
-<section class="w-full py-10 bg-green-500">
-  <div class="container mx-auto h-[500px]"></div>
+<section class="bgGradient h-max w-full py-10 text-white">
+  <div class="container flex flex-col items-center gap-4 mx-auto">
+    <article class="mb-5">
+      <h1 class="h2 mb-5 text-center">Sobre Nosotros</h1>
+      <p class="px-2 text-center">
+        Compres Comunicaciones es una empresa especializada en la venta de
+        equipos de telecomunicaciones, ofreciendo una amplia variedad de
+        productos diseñados para satisfacer las necesidades de cada cliente.
+        Nuestra misión es proporcionar una experiencia excepcional, garantizando
+        calidad, innovación y un servicio de primer nivel en el mercado de
+        telecomunicaciones.
+      </p>
+    </article>
+    <article class="flex flex-col items-center justify-center gap-4 mb-5">
+      <h3 class="h3">Horario</h3>
+      <h4 class="h4">Lunes a Viernes</h4>
+      <h4 class="h4">9:00am a 6:00pm</h4>
+    </article>
+    <div class="flex flex-col items-center justify-center gap-4 mb-5">
+      <p class="flex items-center justify-center gap-2 text-center">
+        <Icon size="32" name="mdi:telephone" />
+        <span
+          ><a href="https://wa.me/18293053240">Telefono: 829-305-3240</a></span
+        >
+      </p>
+      <p class="flex items-center justify-center gap-2 text-center">
+        <Icon size="32" name="ic:baseline-email" />
+        <span
+          ><a href="mailto:josecompres2011@gmail.com"
+            >Correo: josecompres2011@gmail.com</a
+          >
+        </span>
+      </p>
+      <p class="flex items-center justify-center gap-2 text-center">
+        <Icon size="32" name="gg:instagram" />
+        <span
+          ><a href="https://www.instagram.com/comprecomunicaciones/"
+            >Compres Comunicaciones</a
+          ></span
+        >
+      </p>
+    </div>
+    <!-- MAPA -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.734796312745!2d-69.8562851!3d18.4956682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8716d2f3d80f%3A0xa885a877ac17d6ca!2sCompres%20Comunicaciones!5e0!3m2!1ses!2sdo!4v1738791543680!5m2!1ses!2sdo"
+      width="600"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      class="w-full h-[200px] md:h-[350px]"></iframe>
+  </div>
 </section>
+
+<style is:raw>
+  a {
+    @apply hover:underline;
+  }
+
+  .bgGradient {
+    background-color: #4da9e6;
+    background-image: linear-gradient(135deg, #4da9e6 0%, #6d70af 100%);
+  }
+</style>

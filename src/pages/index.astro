@@ -1,13 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-import Hero from "@/components/sections/Hero.astro";
+import "swiper/css";
+import "swiper/css/pagination";
+
 import LastProductAdded from "@/components/sections/LastProductAdded.astro";
 import AboutUs from "@/components/sections/AboutUs.astro";
+import SlideShow from "@/components/shared/SlideShow.astro";
 ---
 
 <Layout title="Compres Comunicaciones">
-  <Hero />
+  <SlideShow />
   <LastProductAdded />
   <AboutUs />
 </Layout>

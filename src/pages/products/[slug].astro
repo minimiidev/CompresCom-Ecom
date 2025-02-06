@@ -31,34 +31,85 @@ const { brand, name, imgSrc, price, color, storage } = phone;
 
 <Layout title={`${name} | Compres Comunicaciones`}>
   <section
-    class="w-full py-10 md:grid-cols-2 grid grid-cols-1 gap-5 lg:px-[100px] md:gap-12 mx-auto place-items-start mb-[400px]"
+    class="w-full container pt-[80px] md:pt-[100px] md:grid-cols-2 grid grid-cols-1 gap-5 lg:px-[100px] mx-auto place-items-center md:place-items-start mb-[100px]"
   >
-    <img src={imgSrc} alt=`${name} imagen` class="xl:min-w-[600px]" />
-    <div class="lg:py-[70px]">
-      <h1 class="h2 mb-10">{name}</h1>
-      <p class="mb-5">Marca: {brand}</p>
-      <p class="">RD$ {price}</p>
-      <p class="my-5">Color:</p>
+    <article class="flex items-center justify-center">
+      <img src={imgSrc} alt=`${name} imagen` class="xl:min-w-[600px]" />
+    </article>
+    <article class="lg:py-[70px] md:my-10">
+      <h1 id="name" class="h1 mb-10 text-orange-500">{name}</h1>
+      <h3 class="h3 mb-5">Marca: {brand}</h3>
+      <h3 class="h3">RD$ {price}</h3>
+      <h4 class="h4 my-5">Color:</h4>
       <ul class="flex w-full gap-2">
         {
           color.map((item) => (
-            <li class="cursor-pointer hover:bg-sky-500 hover:text-white rounded-2xl inline px-4 py-2 border min-w-[60px] transition-all duration-300 ease-in-out">
+            <li
+              data-color={item}
+              class="cursor-pointer hover:bg-sky-500 hover:text-white rounded-2xl inline px-4 py-2 border min-w-[60px] transition-all duration-300 ease-in-out"
+            >
               {item}
             </li>
           ))
         }
       </ul>
-      <p class="my-5">Almacenamiento:</p>
+      <h4 class="h4 my-5">Almacenamiento:</h4>
       <ul class="flex w-full gap-2 mb-6">
         {
           storage.map((item) => (
-            <li class="cursor-pointer hover:bg-sky-500 hover:text-white rounded-2xl inline px-4 py-2 border min-w-[60px] transition-all duration-300 ease-in-out">
+            <li
+              data-storage={item}
+              class="inline min-w-[100px] cursor-pointer rounded-2xl border px-4 py-2 text-center transition-all duration-300 ease-in-out hover:bg-sky-500 hover:text-white"
+            >
               {item} {item === 1 ? "TB" : "GB"}
             </li>
           ))
         }
       </ul>
-      <WhatsApp class:list={"bg-green-500 text-white"} />
-    </div>
+      <WhatsApp
+        msg={`Me interesa ${name}, con el almacenamiento de ${storage} y el color de ${color}`}
+      />
+    </article>
   </section>
 </Layout>
+
+<script>
+  const btnWhats = document.getElementById("whatsappButton");
+
+  const colors = document.querySelectorAll("[data-color]");
+  const storages = document.querySelectorAll("[data-storage]");
+
+  const name = document.getElementById("name")?.textContent ?? "";
+  let selectedColor = "";
+  let selectedStorage = "";
+
+  colors.forEach((color) => {
+    color.addEventListener("click", () => {
+      colors.forEach((item) =>
+        item.classList.remove("bg-sky-500", "text-white")
+      );
+      color.classList.add("bg-sky-500", "text-white");
+      selectedColor = color.textContent ?? "";
+      updateMessage();
+    });
+  });
+
+  storages.forEach((storage) => {
+    storage.addEventListener("click", () => {
+      storages.forEach((item) =>
+        item.classList.remove("bg-sky-500", "text-white")
+      );
+      storage.classList.add("bg-sky-500", "text-white");
+      selectedStorage = storage.textContent ?? "";
+      updateMessage();
+    });
+  });
+
+  function updateMessage() {
+    const msg = `Me interesa ${name} de color ${selectedColor} con el almacenamiento de ${selectedStorage}`;
+
+    const url = `https://wa.me/18293053240/?text=${encodeURIComponent(msg)}`;
+
+    btnWhats!.setAttribute("href", url);
+  }
+</script>

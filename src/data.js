@@ -6,15 +6,16 @@ export const links = [
         path: "/",
     },
     {
-        text: "Android",
-        path: "/android",
+        text: "Samsung",
+        path: "/brand/samsung",
     },
     {
-        text: "iPhone",
-        path: "/iPhone",
+        text: "Apple",
+        path: "/brand/apple",
     },
     {
         text: "Otros",
         path: "/others",
     },
 ]
+

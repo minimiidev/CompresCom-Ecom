@@ -1,22 +1,51 @@
 ---
-
+import { links } from "@/data";
+import Icon from "astro-iconify";
 ---
 
-<footer class="mx-auto">
-  <section class="flex flex-col items-center justify-center py-12">
-    <div class="container flex items-start justify-between w-full">
+<footer class="w-full">
+  <section class="container flex flex-col items-center justify-center py-12">
+    <div
+      class="container flex items-start justify-center gap-5 w-full flex-wrap"
+    >
       <h1 class="h2">Logo</h1>
 
       <div>
-        <h3 class="h3">Equipos</h3>
-        <ul>
-          <li>Apple</li>
-          <li>Samsung</li>
-          <li>Xiaomi</li>
+        <h3 class="h3 pl-3">Equipos</h3>
+        <ul class="items-start justify-start flex flex-col">
+          {
+            links.map((link) => (
+              <li class="">
+                <a
+                  href={link.path}
+                  class="inline-block min-w-[80px] px-3 py-2 font-medium"
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
-      <div>
+      <div class="flex items-center justify-center gap-4 w-full mt-5">
+        <a href="https://wa.me/18293053240">
+          <Icon
+            size="48"
+            name="mdi:whatsapp"
+            class="hover:scale-95 transition-all duration-300 ease-in-out"
+          />
+        </a>
+        <a href="https://www.instagram.com/comprecomunicaciones/">
+          <Icon
+            size="48"
+            name="gg:instagram"
+            class="hover:scale-95 transition-all duration-300 ease-in-out"
+          />
+        </a>
+      </div>
+
+      <!-- <div>
         <h3 class="h3">Servicios</h3>
         <ul>
           <li>Reparaciones</li>
@@ -24,7 +53,7 @@
           <li>Accesorios</li>
           <li>Computadores</li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <p class="p1 mt-20">
       &copy; {new Date().getFullYear()} Compres Comunicaciones

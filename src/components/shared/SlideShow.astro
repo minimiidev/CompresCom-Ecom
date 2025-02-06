@@ -21,8 +21,8 @@ const transformedImages = images.map((image) => ({
   ...image,
   imgSrc: image.imgSrc
     ? urlFor(image.imgSrc)
-        // .width(4400) // Resize to 1200px width
-        // .height(2000) // Resize to 800px height
+        .width(4400) // Resize to 1200px width
+        .height(2000) // Resize to 800px height
         .format("webp") // Convert to WebP format
         .quality(90) // Set image quality to 90%
         .url() // Generate the URL
@@ -30,31 +30,37 @@ const transformedImages = images.map((image) => ({
 }));
 ---
 
-<div
-  class="swiper w-auto h-[300px] md:h-[450px] lg:h-[700px] flex items-center justify-center"
->
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    {
-      transformedImages.map(({ name, imgSrc, description }) => (
-        <div class="swiper-slide relative cursor-pointer">
-          <a href="#">
-            <img src={imgSrc} alt={name} class="object-cover w-full h-full" />
-            {description && (
-              <div class="backdrop-blur-2xl lg:rounded-4xl -bottom-10 left-1/2 absolute w-full p-5 transform -translate-x-1/2 -translate-y-1/2 bg-transparent">
-                <h3 class="h3 text-center text-white">{description}</h3>
-              </div>
-            )}
-          </a>
-        </div>
-      ))
-    }
+<section class="w-full flex items-center pt-[80px]">
+  <article
+    class="swiper w-auto h-[200px] md:h-[450px] lg:h-[700px] flex items-center justify-center border"
+  >
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {
+        transformedImages.map(({ name, imgSrc, description }) => (
+          <div class="swiper-slide relative cursor-pointer ">
+            <a href="#" class="w-full h-full">
+              <img
+                src={imgSrc}
+                alt={name}
+                class="object-fill md:object-cover min-w-full min-h-full"
+              />
+              {description && (
+                <div class="backdrop-blur-2xl lg:rounded-4xl bottom-0 left-1/2 absolute w-full py-1 md:py-4 transform -translate-x-1/2  bg-transparent">
+                  <h4 class="h4 text-center text-white">{description}</h4>
+                </div>
+              )}
+            </a>
+          </div>
+        ))
+      }
 
-    <!-- If we need pagination -->
-    <!-- <div class="swiper-pagination z-10"></div> -->
-  </div>
-</div>
+      <!-- If we need pagination -->
+      <!-- <div class="swiper-pagination z-10"></div> -->
+    </div>
+  </article>
+</section>
 
 <style>
   .blur {

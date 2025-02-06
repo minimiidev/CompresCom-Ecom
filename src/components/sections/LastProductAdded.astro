@@ -27,10 +27,10 @@ const { data: phones } = await loadQuery<
 ---
 
 <section class="w-full py-10">
-  <div class="container mx-auto">
+  <div class="container flex flex-col items-center justify-center">
     <h2 class="h2 mb-10">Equipos Moviles</h2>
 
-    <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1">
+    <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
       {phones.map((phone) => <ProductCard {...phone} />)}
     </div>
   </div>

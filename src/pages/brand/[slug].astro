@@ -33,9 +33,9 @@ const { data: phones } = await loadQuery<
 ---
 
 <Layout title={`Productos ${slug} | Compres Comunicaciones`}>
-  <section class="container w-full py-10 mx-auto">
-    <h1 class="h1 w-full mb-[40px]">Equipos {slug}</h1>
-    <div class="flex gap-4">
+  <section class="container w-full pt-[100px] md:pt-[120px] mx-auto">
+    <h1 class="h1 text-center w-full mb-[40px]">Equipos {slug}</h1>
+    <div class="flex items-center justify-center gap-4">
       {phones.map((phone) => <ProductCard {...phone} />)}
     </div>
   </section>

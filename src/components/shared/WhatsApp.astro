@@ -5,14 +5,22 @@ const variant = {
   primary: "bg-primary text-white",
   secondary: "bg-secondary text-white",
 };
+
+interface Props {
+  msg: string;
+  class?: string;
+}
+
+const { msg } = Astro.props;
 ---
 
 <!-- target="_blank" -->
 <a
-  href="#"
+  id="whatsappButton"
+  href=`https://wa.me/18293053240/?text=`
   rel="noopener noreferrer"
   class:list={[
-    "hover:scale-95 inline-flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300 ease-in-out font-medium",
+    "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-500 hover:bg-green-700 px-4 py-2 font-medium text-white shadow-md transition-all duration-300 ease-in-out hover:scale-95",
     Astro.props.class,
   ]}
 >
