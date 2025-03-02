@@ -4,13 +4,17 @@ import Layout from "@/layouts/Layout.astro";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import LastProductAdded from "@/components/sections/LastProductAdded.astro";
+import ShowPhones from "@/components/sections/ShowPhones.astro";
 import AboutUs from "@/components/sections/AboutUs.astro";
 import SlideShow from "@/components/shared/SlideShow.astro";
+import ShowComputers from "@/components/sections/ShowComputers.astro";
+import ShowAccesories from "@/components/sections/ShowAccesories.astro";
 ---
 
 <Layout title="Compres Comunicaciones">
   <SlideShow />
-  <LastProductAdded />
+  <ShowPhones />
+  <ShowAccesories />
+  <ShowComputers />
   <AboutUs />
 </Layout>

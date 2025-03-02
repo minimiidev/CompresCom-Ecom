@@ -1,9 +1,11 @@
 ---
 import Footer from "@/components/sections/Footer.astro";
 import NavBar from "@/components/sections/NavBar.astro";
-import "@/global.css";
+import "@/styles/global.css";
 
-import { VisualEditing } from "@sanity/astro/visual-editing";
+import { ClientRouter, fade, slide } from "astro:transitions";
+
+// import { VisualEditing } from "@sanity/astro/visual-editing";
 
 interface Props {
   title: string;
@@ -11,8 +13,8 @@ interface Props {
 
 const { title } = Astro.props;
 
-const visualEditingEnabled =
-  import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == "true";
+// const visualEditingEnabled =
+//   import.meta.env.PUBLIC_SANITY_VISUAL_EDITING_ENABLED == "true";
 ---
 
 <html lang="en">
@@ -30,13 +32,19 @@ const visualEditingEnabled =
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
-  <body class="">
+  <body>
     <NavBar />
     <main>
       <slot />
     </main>
     <Footer />
-    <VisualEditing enabled={visualEditingEnabled} zIndex={1000} />
+
+    <!-- <VisualEditing enabled={visualEditingEnabled} zIndex={1000} /> -->
   </body>
 </html>
+
+<script>
+  import { initLenis } from "@/utils/lenis";
+</script>

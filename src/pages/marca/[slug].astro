@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PhoneCard from "@/components/product/PhoneCard.astro";
+import { getAccesoriesByBrand, getPhonesByBrand } from "@/utils/sanity";
+import AccesoryCard from "@/components/product/AccesoryCard.astro";
+
+const slug = Astro.params.slug ?? "";
+
+const phones = await Astro.callAction(getPhonesByBrand, slug);
+const accesories = await Astro.callAction(getAccesoriesByBrand, slug);
+---
+
+<Layout title={`Productos ${slug} | Compres Comunicaciones`}>
+  <section class="w-full py-10 mt-[100px]">
+    <h1 class="h1 text-center w-full mb-[40px] font-bold">Equipos {slug}</h1>
+    <div class="flex items-start justify-center gap-4">
+      {phones.map((phone: any) => <PhoneCard {...phone} />)}
+      {accesories.map((acc: any) => <AccesoryCard {...acc} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getAccesoriesByType } from "@/utils/sanity";
+import AccesoryCard from "@/components/product/AccesoryCard.astro";
+
+const type = Astro.params.type ?? "";
+
+const accByType = await getAccesoriesByType(type);
+---
+
+<Layout title={`${type} | Compres Comunicaciones`}>
+  <section class="w-full py-10 mt-[100px]">
+    <div class="container flex flex-col items-center justify-center">
+      <h2 class="h2 mb-10">{type}</h2>
+
+      <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+        {accByType.map((acc: any) => <AccesoryCard {...acc} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

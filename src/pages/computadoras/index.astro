@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getAllComputers } from "@/utils/sanity";
+import ComputerCard from "@/components/product/ComputerCard.astro";
+
+const computers = await getAllComputers();
+---
+
+<Layout title="Equipos Moviles | Compres Comunicaciones">
+  <section class="w-full py-10 mt-[100px]">
+    <div class="container flex flex-col items-center justify-center">
+      <h1 class="h1 mb-10 font-bold text-center">Laptop y Computadoras</h1>
+
+      <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+        {computers.map((pc) => <ComputerCard {...pc} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

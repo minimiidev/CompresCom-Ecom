@@ -1,0 +1,49 @@
+---
+import type { Accesory } from "@/utils/sanity";
+
+const { images, type, name, brand, price, slug, storage } = Astro.props;
+---
+
+<div
+  class="w-[250px] hover:shadow-2xl transition-all duration-300 ease-in-out overflow-hidden rounded-xl border border-slate-400 shadow-sm [&:hover]:shadow-2xl [&:hover>img]:scale-[1.05] [&>*]:transition-all [&>*]:duration-300 cursor-pointer min-h-[400px]"
+>
+  <a
+    href={`/accesorios/${slug}`}
+    class="flex items-center justify-center overflow-hidden"
+  >
+    <img
+      src={images[0]}
+      alt={name}
+      class="object-contain min-w-[250px] min-h-[250px] hover:scale-[1.05] transition-all duration-300 ease-in-out p-6"
+    />
+  </a>
+  <div class="border-t-1 w-full px-4 py-4">
+    <div class="flex flex-col justify-between">
+      <a
+        href={`/marca/${brand}`}
+        class="hover:underline text-sm text-gray-600 uppercase"
+      >
+        {brand}
+      </a>
+      <h4 class="h4 font-medium">
+        <a href={`/accesorios/${slug}`} class="hover:underline">{name}</a>
+      </h4>
+
+      <a href={`/accesorios/tipo/${type}`} class="opacity-80 hover:underline">
+        {type}
+      </a>
+    </div>
+    <div>
+      <div class="flex gap-2">
+        {
+          storage && (
+            <p class="pt-2">
+              {storage === 1 ? `${storage}TB ` : `${storage}GB`}
+            </p>
+          )
+        }
+      </div>
+      <p class="p1 py-2 font-bold">RD$ {price}</p>
+    </div>
+  </div>
+</div>

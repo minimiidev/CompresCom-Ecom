@@ -1,0 +1,16 @@
+---
+import { getAllAccesories } from "@/utils/sanity";
+import AccesoryCard from "../product/AccesoryCard.astro";
+
+const accesories = await getAllAccesories();
+---
+
+<section class="w-full py-10">
+  <div class="container flex flex-col items-center justify-center">
+    <h2 class="h2 mb-10 text-center font-bold">Accesorios</h2>
+
+    <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+      {accesories.map((acc) => <AccesoryCard {...acc} />)}
+    </div>
+  </div>
+</section>

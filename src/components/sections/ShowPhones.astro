@@ -1,0 +1,16 @@
+---
+import { getAllPhones } from "@/utils/sanity";
+import PhoneCard from "../product/PhoneCard.astro";
+
+const phones = await getAllPhones();
+---
+
+<section class="w-full py-10">
+  <div class="container flex flex-col items-center justify-center">
+    <h2 class="h2 mb-10 font-bold text-center">Equipos Moviles</h2>
+
+    <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+      {phones.map((phone) => <PhoneCard {...phone} />)}
+    </div>
+  </div>
+</section>

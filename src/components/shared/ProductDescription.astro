@@ -1,0 +1,72 @@
+---
+import WhatsApp from "./WhatsApp.astro";
+
+interface Props {
+  name?: string;
+  brand?: string;
+  price?: number;
+  color?: string | string[];
+  storage?: number | number[] | null | undefined;
+  description?: string;
+}
+
+const { name, brand, price, color, storage, description } = Astro.props;
+---
+
+<article class="lg:mt-0 flex flex-col gap-2 mt-5 mb-10">
+  <a
+    href={`/marca/${brand}`}
+    class="hover:underline text-sm text-gray-600 uppercase"
+  >
+    {brand}
+  </a>
+  <h1 id="name" class="h1 font-medium">{name}</h1>
+  <p class="h4 font-medium">RD$ {price}</p>
+  <small class="text-[12px] font-inter">Impuestos incluidos</small>
+
+  <p class="h4">Color:</p>
+  {
+    Array.isArray(color) ? (
+      <ul class="flex flex-wrap w-full gap-2">
+        {color.map((c) => (
+          <li class="px-3 py-2 border rounded cursor-pointer" data-color={c}>
+            {c}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <ul class="flex flex-wrap w-full gap-2">
+        <li class="px-3 py-2 border rounded cursor-pointer" data-color={color}>
+          {color}
+        </li>
+      </ul>
+    )
+  }
+
+  {
+    storage && (
+      <>
+        <h4 class="h4">Almacenamiento:</h4>
+        <ul class=" flex flex-wrap w-full gap-2">
+          {Array.isArray(storage) ? (
+            storage.map((s) => (
+              <li
+                class="px-3 py-2 border rounded cursor-pointer"
+                data-storage={s}
+              >
+                {s} GB
+              </li>
+            ))
+          ) : (
+            <li
+              class="px-3 py-2 border rounded cursor-pointer"
+              data-storage={storage}
+            >
+              {storage} GB
+            </li>
+          )}
+        </ul>
+      </>
+    )
+  }
+</article>

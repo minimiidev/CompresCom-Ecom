@@ -1,6 +1,6 @@
 export default {
-  name: "phone",
-  title: "Telefono",
+  name: "accesory",
+  title: "Accesorios",
   type: "document",
   fields: [
     {
@@ -9,6 +9,13 @@ export default {
       type: "reference",
       to: [{ type: "brand" }],
       validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "type",
+      title: "Tipo de Accesorio",
+      type: "reference",
+      to: [{ type: "accesoryType" }],
+      //   validation: (Rule: any) => Rule.required(),
     },
     {
       name: "name",
@@ -52,9 +59,28 @@ export default {
     {
       name: "storage",
       title: "Almacenamiento",
-      description: "Ej: 128, 256, 512, 1TB = 1",
-      type: "array",
-      of: [{ type: "number" }],
+      description: "Ej: 2, 4, 6",
+      type: "string",
+      //   validation: (Rule: any) => Rule.required(),
+    },
+    //   {
+    //     name: "cpu",
+    //     title: "Procesador",
+    //     type: "string",
+    //     validation: (Rule: any) => Rule.required(),
+    //   },
+    //   {
+    //     name: "ram",
+    //     title: "RAM",
+    //     description: "Ej: 128, 256, 512, 1TB = 1",
+    //     type: "string",
+    //     validation: (Rule: any) => Rule.required(),
+    //   },
+    {
+      name: "description",
+      title: "Descripcion",
+      type: "blockContent",
+      description: "Descripcion del producto",
       validation: (Rule: any) => Rule.required(),
     },
   ],

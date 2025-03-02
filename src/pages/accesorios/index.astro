@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getAllAccesories } from "@/utils/sanity";
+import AccesoryCard from "@/components/product/AccesoryCard.astro";
+
+const accesories = await getAllAccesories();
+---
+
+<Layout title="Accesorios | Compres Comunicaciones">
+  <section class="w-full py-10 mt-[100px]">
+    <div class="container flex flex-col items-center justify-center">
+      <h1 class="h1 mb-10 font-bold">Accesorios</h1>
+
+      <div class="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+        {accesories.map((acc) => <AccesoryCard {...acc} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

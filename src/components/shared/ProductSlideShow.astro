@@ -1,0 +1,72 @@
+---
+interface Props {
+  images: string[];
+  name?: string;
+}
+
+const { images, name } = Astro.props;
+---
+
+<!-- Slider main container -->
+<div
+  class="swiper w-full md:my-[80px] md:w-[500px] lg:w-[600px] md:h-auto h-[300px] mt-[60px] lg:mt-0"
+>
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper h-[95%]">
+    <!-- Slides -->
+    {
+      images.map((image) => (
+        <div class="swiper-slide">
+          <img src={image} alt={name} class="object-contain w-full h-full" />
+        </div>
+      ))
+    }
+  </div>
+  <!-- Pagination -->
+  <!-- <div class="swiper-pagination"></div> -->
+  <!-- Navigation buttons -->
+  <!-- <div class="swiper-button-prev"></div> -->
+  <!-- <div class="swiper-button-next"></div> -->
+  <!-- Scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+<script>
+  // Import Swiper and required modules
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+
+  // Import Swiper styles
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+  import "swiper/css/scrollbar";
+  document.addEventListener("astro:page-load", () => {
+    // Initialize Swiper
+    const swiper = new Swiper(".swiper", {
+      modules: [Navigation, Pagination, Scrollbar],
+      // Optional parameters
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+
+      // Pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      // Scrollbar
+      scrollbar: {
+        el: ".swiper-scrollbar",
+        draggable: true,
+      },
+    });
+  });
+</script>

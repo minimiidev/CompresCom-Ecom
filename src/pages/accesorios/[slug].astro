@@ -1,0 +1,43 @@
+---
+import ProductDescription from "@/components/shared/ProductDescription.astro";
+import ProductSlideShow from "@/components/shared/ProductSlideShow.astro";
+import WhatsApp from "@/components/shared/WhatsApp.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getAccesoriesBySlug } from "@/utils/sanity";
+
+const slug = Astro.params.slug ?? "";
+
+const accesory = await getAccesoriesBySlug(slug);
+const { brand, name, images, price, color, storage } = accesory;
+---
+
+<Layout title={`${name} | Compres Comunicaciones`}>
+  <section
+    class="container py-8 mx-auto lg:flex lg:py-[100px] lg:items-start lg:justify-start lg:mt-[50px] lg:gap-10"
+  >
+    <!-- Slider -->
+    <ProductSlideShow images={images} name={name} />
+    <!-- Product Desc -->
+    <div class="lg:w-1/2">
+      <ProductDescription
+        name={name}
+        brand={brand}
+        price={price}
+        color={color}
+        storage={storage}
+      />
+
+      <WhatsApp
+        msg={`Me interesa ${name}, con el almacenamiento de ${storage} y el color de ${color}`}
+      />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { handleProduct } from "@/utils/product/handleProduct";
+
+  // document.addEventListener("astro:page-load", handleProduct);
+
+  handleProduct();
+</script>

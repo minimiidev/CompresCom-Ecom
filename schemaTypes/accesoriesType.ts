@@ -1,14 +1,14 @@
 // schemas/brand.js
 export default {
-  name: "brand",
-  title: "Marca",
+  name: "accesoryType",
+  title: "Tipo de Accesorio",
   type: "document",
   fields: [
     {
-      name: "name",
-      title: "Nombre de la marca*",
+      name: "type",
+      title: "Tipo de Accesorio",
       type: "string",
-      description: "Ej: Samsung, Apple, Xiaomi",
+      description: "Ej: Reloj, Cargador, Auriculares",
       validation: (Rule: any) => Rule.required(), // Obligatorio y único
     },
     {
@@ -20,13 +20,13 @@ export default {
         hotspot: true, // Permite recortar la imagen
         accept: "image/png, image/jpeg, image/svg+xml", // Formatos permitidos
       },
-      // validation: (Rule: any) => Rule.required(), // Obligatorio
+      //   validation: (Rule: any) => Rule.required(), // Obligatorio
     },
   ],
   // Previsualización en el listado de Sanity
   preview: {
     select: {
-      title: "name",
+      title: "type",
       media: "icon", // Muestra el ícono junto al nombre
     },
   },

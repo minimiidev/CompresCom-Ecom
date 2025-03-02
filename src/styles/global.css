@@ -43,38 +43,34 @@ body {
 }
 
 .h1 {
-  @apply font-montserrat font-bold tracking-wide leading-[0.85] text-4xl;
+  @apply font-montserrat  tracking-wide leading-[0.85] text-4xl;
 }
 .h2 {
-  @apply font-montserrat font-bold tracking-wide text-3xl;
+  @apply font-montserrat text-3xl tracking-wide;
 }
 
 .h3 {
-  @apply font-montserrat font-bold  tracking-wide text-2xl;
+  @apply font-montserrat text-2xl tracking-wide;
 }
 
 .h4 {
-  @apply font-montserrat font-bold tracking-wide text-xl;
+  @apply font-montserrat text-xl tracking-wide;
 }
 
-/* .p1 {
-  @apply text-[22px] font-bold tracking-wider md:text-2xl lg:text-3xl transition-all duration-300 ease-in-out;
-} */
+.p1 {
+  @apply font-inter text-[16px];
+}
 
-/* .p {
-  @apply text-sm md:text-base lg:text-lg;
-} */
-
-p,
+.p,
 span,
 label {
-  @apply font-inter text-sm md:text-base;
+  @apply font-inter md:text-base text-sm;
 }
 
 /* .text-pasive {
-  @apply text-gray-600 dark:text-gray-400;
+  @apply dark:text-gray-400 text-gray-600;
 } */
 
 /* .hover\:text-pasive:hover {
-  @apply text-gray-600 dark:text-gray-400;
+  @apply dark:text-gray-400 text-gray-600;
 } */

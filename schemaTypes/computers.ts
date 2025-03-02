@@ -1,6 +1,6 @@
 export default {
-  name: "phone",
-  title: "Telefono",
+  name: "computer",
+  title: "Computadoras",
   type: "document",
   fields: [
     {
@@ -45,16 +45,34 @@ export default {
       name: "color",
       title: "Color",
       description: "Ej: Negro, Blanco, Azul",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "string",
       validation: (Rule: any) => Rule.required(),
     },
     {
       name: "storage",
       title: "Almacenamiento",
       description: "Ej: 128, 256, 512, 1TB = 1",
-      type: "array",
-      of: [{ type: "number" }],
+      type: "string",
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "cpu",
+      title: "Procesador",
+      type: "string",
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "ram",
+      title: "RAM",
+      description: "Ej: 128, 256, 512, 1TB = 1",
+      type: "string",
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "description",
+      title: "Descripcion",
+      type: "blockContent",
+      description: "Descripcion del producto",
       validation: (Rule: any) => Rule.required(),
     },
   ],
